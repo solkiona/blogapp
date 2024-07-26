@@ -1,0 +1,53 @@
+{%extends 'layout.html'%}
+
+
+{%block content%}
+
+        <div id='post_content'>
+
+        
+                <div style="display: flex; gap: 20px;align-items: center">
+
+                
+                                <div id='image_file'>
+                                        <img id="profile_pix" src="{{url_for('static', filename='profile_pix/' + post.author.image_file)}}">
+                                </div>
+                              
+
+                                <div>
+                                        <h2> {{
+                                        post.author.username
+                                        }}</h2>
+                                        <p class="text-secondary">
+                                        {{
+                                                post.author.email
+                                        }}
+                                        </p>
+                                </div>
+                        </div>
+                        <hr class="separator">
+
+        
+                        <h1  style="color: red;"> {{post.title}}</h1>
+                        <p>{{post.content}}</p>
+                        <small style="color:red;">{{post.date_posted.strftime('%Y-%m-%d')}}
+
+                           <div id="del_update">
+                                <a href="{{url_for('update_post', post_id=post.id)}}">Update</a>
+                                <form id="delete" action="{{url_for('delete_post', post_id=post.id)}}" method='post'>
+                                    <input type="submit"  value="Delete">
+                                </form>
+                           </div>
+                         
+                        </small>
+
+                        
+                        
+                    
+                        
+                        
+               
+
+        </div>       
+        
+{%endblock content%}

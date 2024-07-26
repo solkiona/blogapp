@@ -1,0 +1,45 @@
+{%extends 'layout.html'%}
+
+
+{%block content%}
+
+{%for post in posts%}
+
+        <div id='post_content'>
+
+        
+                <div style="display: flex; gap: 20px;align-items: center">
+
+                
+                                <div id='image_file'>
+                                        <img id="profile_pix" src="{{url_for('static', filename='profile_pix/' + post.author.image_file)}}">
+                                </div>
+                              
+
+                                <div>
+                                        <h2> {{
+                                        post.author.username
+                                        }}</h2>
+                                        <p class="text-secondary">
+                                        {{
+                                                post.author.email
+                                        }}
+                                        </p>
+                                </div>
+                        </div>
+                        <hr class="separator">
+
+        
+                        <a href="{{url_for('post', post_id=post.id)}}" id="post_title">
+                                <h1 > {{post.title}}</h1>
+                        </a>
+                        <p>{{post.content}}</p>
+                        <small style="color:red;">{{post.date_posted.strftime('%Y-%m-%d')}}</small>
+                        
+               
+
+        </div>
+{%endfor%}
+       
+        
+{%endblock content%}

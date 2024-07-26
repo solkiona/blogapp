@@ -1,0 +1,52 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+<div class="register login">
+    <form method="POST" action="">
+    {{
+        form.hidden_tag()
+    }}
+
+
+
+    <div class="space">
+        {{
+                form.title.label()
+        }}
+        {{form.title(class="form-field")}}
+
+        {%if form.title.errors%}
+        <div>
+            {%for error in form.title.errors%}
+            <span style="color:red;">
+                {{error[0:-1]}}
+            </span>
+            {%endfor%}
+        </div>
+        {%endif%}
+    </div>
+    <div class="space">
+        {{
+                form.content.label()
+        }}
+        {{form.content(class="form-field")}}
+        {%if form.content.errors%}
+        <div>
+            {%for error in form.content.errors%}
+            <span style="color: red;">
+                {{error|slice(0,-1)}}
+            </span>
+            {%endfor%}
+        </div>
+        {%endif%}
+    </div>
+
+
+    <div class="space">
+        {{form.submit(class="form-field submit")}}
+    </div>
+</form>
+</div>
+
+{%endblock%}

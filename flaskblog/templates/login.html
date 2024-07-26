@@ -1,0 +1,60 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+
+<div class="register login">
+    <form method="POST" action="">
+{{
+    form.hidden_tag()
+}}
+
+
+
+<div class="space">
+    {{
+            form.email.label()
+    }}
+    {{form.email(class="form-field")}}
+
+    {%if form.email.errors%}
+    <div>
+        {%for error in form.email.errors%}
+        <span style="color:red;">
+            {{error[0:-1]}}
+        </span>
+        {%endfor%}
+    </div>
+    {%endif%}
+</div>
+<div class="space">
+    {{
+            form.password.label()
+    }}
+    {{form.password(class="form-field")}}
+    {%if form.password.errors%}
+    <div>
+        {%for error in form.password.errors%}
+        <span style="color: red;">
+            {{error|slice(0,-1)}}
+        </span>
+        {%endfor%}
+    </div>
+    {%endif%}
+</div>
+
+<div style="padding-bottom: 20px;">
+    {{form.remember()}}
+    {{form.remember.label()}}
+</div>
+
+<div class="space">
+    {{form.submit(class="form-field submit")}}
+</div>
+</form>
+<div>
+    Don't Have an Account? <a style="color:red" href="{{url_for('login')}}"> Click to Sign Up </a>
+</div>
+</div>
+
+{%endblock%}
